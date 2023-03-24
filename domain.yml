@@ -1,0 +1,92 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - search_properties
+  - schedule_tour
+  - property_details
+  - availability_pricing
+  - lease_details
+  - cancel_tour
+  - parking_info
+  - pet_policy
+
+entities:
+  - location
+
+slots:
+  location:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: location
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+
+  utter_out_of_scope:
+  - text: Sorry, I can't handle that request.
+
+  utter_ask_property_info:
+  - text: "Sure, which location are you interested in?"
+  
+  utter_lease_details:
+  - text: "The lease is for 12 months, and the rent is $2000 per month."
+  
+  utter_amenities_info:
+  - text: "The property includes a gym, a pool, and a business center."
+  
+  utter_schedule_tour:
+  - text: "Great! We've scheduled a virtual tour for you on [date] at [time]."
+  
+  utter_cancel_tour:
+  - text: "Your virtual tour has been cancelled."
+  
+  utter_recommend_moving:
+  - text: "We recommend [Moving Company] for your moving needs."
+  
+  utter_parking_info:
+  - text: "The property includes a parking garage with a monthly fee of $100."
+
+actions:
+  - action_greet
+  - action_goodbye
+  - action_search_properties
+  - action_provide_property_details
+  - action_availability_pricing
+  - action_provide_lease_details
+  - action_cancel_tour
+  - action_provide_parking_info
+  - action_provide_pet_policy
+  - action_schedule_tour
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+

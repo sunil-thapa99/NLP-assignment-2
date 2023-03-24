@@ -1,0 +1,154 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - howdy
+    - heya
+    - hello again
+    - Greetings
+    
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - tata
+    - see you
+
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: search_properties
+  examples: |
+    - I'm looking for a house to rent in [Markham](location).
+    - Can you help me find a two-bedroom apartment in [Scarborough](location)?
+    - Do you have a listing for houses near [Victoria Park](location)?
+    - I want to buy a house in [Toronto](location).
+
+- intent: schedule_tour
+  examples: |
+    - Can I schedule a tour for tomorrow at 2 PM?
+    - When is the next available time to see the property?
+    - I'd like to schedule a tour for this weekend.
+
+- intent: property_details
+  examples: |
+    - What's the square footage of this apartment?
+    - Does this house have a backyard?
+    - How many bedrooms does this property have?
+
+- intent: availability_pricing
+  examples: |
+    - How much does this apartment cost per month?
+    - Is this house still available?
+    - What's the security deposit for this property?
+
+- intent: cancel_tour
+  examples: |
+    - I need to cancel my tour scheduled for tomorrow.
+    - Can I reschedule my tour for next week?
+    - I'm no longer interested in seeing this property.
+
+- intent: pet_policy
+  examples: |
+    - Are pets allowed in this apartment complex?
+    - What's the pet deposit for this property?
+    - Are there any breed restrictions for dogs?
+
+- intent: lease_details
+  examples: |
+    - How long is the lease term for this apartment?
+    - Is there a penalty for breaking the lease?
+    - What's the policy on renewing a lease?
+
+- intent: parking_info
+  examples: |
+    - Is there a parking garage at this apartment complex?
+    - How much does parking cost for this property?
+    - Are there any restrictions on street parking in this area?
+
+- intent: out_of_scope
+  examples: |
+    - I want to order food
+    - What is 2 + 2?
+    - Who's the US President?

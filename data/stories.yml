@@ -1,0 +1,76 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+
+- story: property search
+  steps:
+    - intent: search_properties
+      entities:
+      - location: "Toronto"
+    - action: action_search_properties
+    # - action: utter_confirm_properties
+
+- story: schedule tour
+  steps:
+    - intent: schedule_tour
+    - action: action_schedule_tour
+    # - action: utter_confirm_properties
+
+- story: property details
+  steps:
+    - intent: property_details
+    - action: action_provide_property_details
+
+- story: pricing details
+  steps:
+    - intent: availability_pricing
+    - action: action_availability_pricing
+
+- story: lease details inquiry
+  steps:
+    - intent: lease_details
+    - action: action_provide_lease_details
+
+- story: cancel tour
+  steps:
+    - intent: cancel_tour
+    - action: action_cancel_tour
+    # - action: utter_confirm_tour_cancelled
+
+- story: parking options inquiry
+  steps:
+    - intent: parking_info
+    - action: action_provide_parking_info
+
+- story: pet policy inquiry
+  steps:
+    - intent: pet_policy
+    - action: action_provide_pet_policy
