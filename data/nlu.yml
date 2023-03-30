@@ -104,51 +104,157 @@ nlu:
     - Can you help me find a two-bedroom apartment in [Scarborough](location)?
     - Do you have a listing for houses near [Victoria Park](location)?
     - I want to buy a house in [Toronto](location).
+    - I want to rent a house in [Markham](location).
+    - rent property [Scarborough](location)
+    - find [North York](location)
+    - Can you show me any available apartments for rent in [Etobicoke](location)?
+    - I'm interested in buying a house in [Mississauga](location).
+    - Do you have any listings for condos in [Downtown Toronto](location)?
+    - Can you help me find a rental property in [North York](location) with a backyard?
+    - I'm looking for a furnished apartment to rent in [Scarborough](location).
+    - Can you show me any houses for sale in [Oakville](location) with a garage?
+    - I'm interested in renting a pet-friendly apartment in [Brampton](location).
+    - Do you have any listings for townhouses in [Richmond Hill](location)?
+    - Can you help me find a property in [Markham](location) that is close to public transportation?
+    - I'm looking for a two-bedroom condo to rent in [North York](location)
+    - 2BR apartment in [Scarborough](location)?
+    - Any houses for rent in [Oakville](location)?
+    - Find rental property with garage in [North York](location).
+    - Show me properties close to transit in [Mississauga](location).
 
 - intent: schedule_tour
   examples: |
+    - Schedule a tour for tomorrow.
+    - Can I book a property viewing?
+    - When can I visit the house?
+    - What times are available for a tour?
+    - I want to see the apartment in person.
+    - Can we schedule a tour of the house?
+    - When is the next showing available?
+    - What are the available times for viewing?
     - Can I schedule a tour for tomorrow at 2 PM?
     - When is the next available time to see the property?
     - I'd like to schedule a tour for this weekend.
+    - Can we visit the property in person?
+    - I want to view the house before making a decision.
+    - Can I see the apartment in person?
+    - When can we come see the house?
+    - What is the soonest we can schedule a tour?
+
+
 
 - intent: property_details
   examples: |
-    - What's the square footage of this apartment?
-    - Does this house have a backyard?
-    - How many bedrooms does this property have?
+    - How big is the apartment?
+    - What's the square footage of this house?
+    - Does the property have a balcony?
+    - How many bathrooms are in this apartment?
+    - Is there a garage with this house?
+    - Can you tell me about the kitchen in this property?
+    - What appliances are included in the rental?
+    - How many bedrooms does this apartment have?
+    - Does this house have a basement?
+    - What's the size of the backyard?
+    - Is there a pool in the backyard?
+    - Can you tell me about the living room in this property?
+    - Does the rental come with furniture?
+    - Are pets allowed in this apartment?
+    - What kind of heating and cooling system does the property have?
+    - How many floors does this house have?
+    - Does the apartment have a washer and dryer?
+    - Can you tell me about the neighborhood where the property is located?
+    - What amenities are nearby?
+    - What is the monthly rent for this property?
+    - Are utilities included in the rental price?
+    - Is there a security deposit required?
+    - Are there any move-in specials or promotions currently available?
+
 
 - intent: availability_pricing
   examples: |
-    - How much does this apartment cost per month?
-    - Is this house still available?
-    - What's the security deposit for this property?
+    - What's the monthly rent for this house?
+    - Is this apartment available for move-in next month?
+    - How much is the security deposit for this rental?
+    - Can you tell me about the leasing options for this property?
+    - What utilities are included in the rental price?
+    - How much is the application fee for this property?
+    - When is the property available for move-in?
+    - Is there a waiting list for this rental?
+    - How much is the pet fee for this property?
+    - Are there any move-in specials or discounts currently available?
+    - Can you tell me about the parking situation for this property?
+    - Is renters insurance required for this rental?
+    - What's the square footage of this rental?
+    - Is this property furnished or unfurnished?
+    - Can you tell me about the lease terms for this rental?
+    - What's the monthly cost of parking for this property?
+    - Is there a penalty for breaking the lease?
+    - Can you tell me about the guest policy for this rental?
+    - What's the maximum occupancy for this rental?
+    - How much notice is required to vacate the property?
+    - Are there any additional fees or charges associated with this rental?
+
 
 - intent: cancel_tour
   examples: |
-    - I need to cancel my tour scheduled for tomorrow.
-    - Can I reschedule my tour for next week?
-    - I'm no longer interested in seeing this property.
+    - I need to cancel my scheduled property tour.
+    - Can I reschedule my appointment to see the rental property?
+    - I'm no longer able to make it to the property tour scheduled for tomorrow.
+    - I need to cancel the tour that was scheduled for next week.
+    - Can you help me reschedule my property tour for a later date?
+    - I've decided not to move forward with this property and need to cancel my tour.
+    - I'm no longer interested in seeing this rental property and need to cancel my scheduled tour.
+    - Can you confirm that my property tour has been cancelled?
+    - I need to cancel the tour that was scheduled for later today.
+    - Can I reschedule my property tour for a different time or day?
+
 
 - intent: pet_policy
   examples: |
     - Are pets allowed in this apartment complex?
-    - What's the pet deposit for this property?
-    - Are there any breed restrictions for dogs?
+    - What is the pet policy for this property?
+    - What is the pet deposit for renting this house?
+    - Are there any restrictions on the number of pets I can have in this rental property?
+    - What types of pets are allowed in this apartment building?
+    - Are there any breed restrictions for dogs in this rental property?
+    - Is there a weight limit for pets in this apartment complex?
+    - What are the fees associated with having a pet in this rental property?
+    - Can you tell me more about the pet policy for this house?
+    - Is there a pet rent or additional fee for having a pet in this rental property?
+
 
 - intent: lease_details
   examples: |
-    - How long is the lease term for this apartment?
-    - Is there a penalty for breaking the lease?
-    - What's the policy on renewing a lease?
+    - What's the lease term for this apartment?
+    - How long is the lease agreement?
+    - Is there a minimum lease duration?
+    - Can you tell me the length of the lease?
+    - What's the maximum lease length?
+    - Are there any restrictions on the lease term?
+    - What happens if I break the lease agreement?
+    - Is there a penalty for early lease termination?
+    - Can I renew my lease agreement?
+    - What's the process for extending my lease?
+
 
 - intent: parking_info
   examples: |
-    - Is there a parking garage at this apartment complex?
-    - How much does parking cost for this property?
-    - Are there any restrictions on street parking in this area?
+    - Is there parking available at this property?
+    - How many parking spots come with this apartment?
+    - Can I reserve a parking spot for my car?
+    - Are there any additional fees for parking?
+    - What are the parking rules for this complex?
+    - Where can I park my motorcycle on this property?
+
 
 - intent: out_of_scope
   examples: |
     - I want to order food
     - What is 2 + 2?
     - Who's the US President?
+    - Can you help me book a flight?
+    - What's the weather like today?
+    - Can you tell me a joke?
+    - Who won the latest soccer match?
+    - What's the best way to learn a new language?
+    - Can you recommend a good restaurant in the area?
