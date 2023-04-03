@@ -30,6 +30,7 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet
 # from rasa_sdk.forms import FormAction
 from datetime import datetime
 
@@ -67,10 +68,15 @@ class ActionSearchProperties(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         location = tracker.get_slot("location")
-        # Perform property search logic here based on user's location input
-        
-        dispatcher.utter_message(text=f"Here are some properties available in {location}: [Property 1], [Property 2], [Property 3]")
-        return []
+        if location is None:
+            dispatcher.utter_message(text="Please enter a location to search for properties.")
+            return []
+        elif not location.strip():
+            dispatcher.utter_message(text="Please enter a valid location to search for properties.")
+            return [SlotSet("entity_name", None)]
+        else:
+            dispatcher.utter_message(text=f"Here are some properties available in {location}: [Property 1], [Property 2], [Property 3]")
+            return []
 
 class ActionProvideLeaseDetails(Action):
 

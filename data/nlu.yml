@@ -107,6 +107,8 @@ nlu:
     - I want to rent a house in [Markham](location).
     - rent property [Scarborough](location)
     - find [North York](location)
+    - Can you help me find a property?
+    - find rent
     - Can you show me any available apartments for rent in [Etobicoke](location)?
     - I'm interested in buying a house in [Mississauga](location).
     - Do you have any listings for condos in [Downtown Toronto](location)?
@@ -121,6 +123,11 @@ nlu:
     - Any houses for rent in [Oakville](location)?
     - Find rental property with garage in [North York](location).
     - Show me properties close to transit in [Mississauga](location).
+
+# - entity: location
+#   examples: |
+#     - in [Hemilton](location)
+#     - near [Miami](location)
 
 - intent: schedule_tour
   examples: |

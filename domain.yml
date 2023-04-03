@@ -9,6 +9,7 @@ intents:
   - mood_unhappy
   - bot_challenge
   - search_properties
+  #   - action_search_properties
   - schedule_tour
   - property_details
   - availability_pricing
@@ -26,6 +27,17 @@ slots:
     mappings:
     - type: from_entity
       entity: location
+
+# Check if search_properties intent has empty location entity
+# * get_info
+#   - utter_ask_my_entity
+# * get_info{"my_entity": "my_entity_value"}
+#   - action_handle_info
+
+## check_entity
+# * search_properties{"location": null}
+#   - action_search_properties
+
 
 responses:
   utter_greet:

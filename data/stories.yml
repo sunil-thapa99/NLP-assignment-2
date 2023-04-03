@@ -36,7 +36,6 @@ stories:
       entities:
       - location: "Toronto"
     - action: action_search_properties
-    # - action: utter_confirm_properties
 
 - story: schedule tour
   steps:
