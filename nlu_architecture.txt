@@ -1,0 +1,1 @@
+[92mYour Rasa model is trained and saved at 'models/nlu-20230403-195053-burgundy-keyword.tar.gz'.[0m
