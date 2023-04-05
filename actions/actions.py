@@ -6,6 +6,9 @@ from rasa_sdk.events import SlotSet
 from datetime import datetime
 from .scrap import get_context, get_links, get_original_url
 import pandas as pd
+import json 
+
+df = pd.DataFrame(columns=["title", "price", "description", "date_posted", "address", "url"])
 
 # Extract title and url from dataframe for chatbot to show
 def get_ad_info(df: pd.DataFrame) -> List[Dict[Text, Any]]:
@@ -24,6 +27,8 @@ class ActionSearchProperties(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         location = tracker.get_slot("location")
+        global df
+        df = df.iloc[0:0]
         if location is None:
             dispatcher.utter_message(text="Please enter a location to search for properties.")
             return []
@@ -31,7 +36,6 @@ class ActionSearchProperties(Action):
             dispatcher.utter_message(text="Please enter a valid location to search for properties.")
             return [SlotSet("entity_name", None)]
         else:
-            df = pd.DataFrame(columns=["title", "price", "description", "date_posted", "address", "url"])
             url = get_original_url(location)
             demo_links = get_links(url=url)
             for link in demo_links[:5]:
@@ -42,15 +46,12 @@ class ActionSearchProperties(Action):
             # Loop through each ad and show through listing
             text = f"Here are some properties available in {location}: \n"
             buttons = []
-            # Loop through each ad and show through listing with buttons
+            # Loop through each ad, payload on title and show url
             for i in range(len(ad_info)):
                 buttons.append(
-                    {"title": f"{i+1} - {ad_info[i]['title']}", "payload": f"/inform{{\"url\": \"{ad_info[i]['url']}\"}}"}
+                    {"title": f"{i+1} - {ad_info[i]['title']}", "payload": '/property_details{\"idx\":\"' + str(i) + '\"}', 
+                     'url': ad_info[i]['url']}
                 )
-            # for i in range(len(ad_info)):
-            #     text += f"{i+1} - {ad_info[i]['title']}: {ad_info[i]['url']} \n"
-            # print(text)
-            # dispatcher.utter_message(text=f"Here are some properties available in {location}: \n"+
             dispatcher.utter_message(text=text, buttons=buttons)
             return []
 
@@ -89,11 +90,18 @@ class ActionProvidePropertyDetails(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        message_text = tracker.latest_message['text']
+        command, json_payload = message_text.split('property_details', 1)
+        idx_value = int(json.loads(json_payload)['idx'])
 
-        # Perform logic to retrieve and format lease details
-        # ...
-        # Example response:
-        dispatcher.utter_message(text="This is the property details function")
+        dispatcher.utter_message(text=f"Here are the details for the property: \n"
+                                        f"Title: {df.iloc[idx_value]['title']} \n"
+                                        f"Price: {df.iloc[idx_value]['price']} \n"
+                                        f"Description: {df.iloc[idx_value]['description'][11:]} \n"
+                                        f"Date Posted: {df.iloc[idx_value]['date_posted']} \n"
+                                        f"Address: {df.iloc[idx_value]['address']} \n"
+                                        f"URL: {df.iloc[idx_value]['url']} \n")
         return []
 
 class ActionAvailabilityPricing(Action):

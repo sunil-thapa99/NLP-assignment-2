@@ -17,12 +17,18 @@ intents:
 - search_properties
 entities:
 - location
+- idx
 slots:
   location:
     type: text
     mappings:
     - type: from_entity
       entity: location
+  idx:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: idx
 responses:
   utter_greet:
   - text: Hey! How are you?

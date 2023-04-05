@@ -14,7 +14,10 @@ function addSuggestion(suggestions) {
         // Loop through suggestions
         for (let i = 0; i < suggLength; i += 1) {
             $(
-                `<div class="menuChips" data-payload='${suggestions[i].payload}'>${suggestions[i].title}</div>`,
+                `<div class="menuChips" data-payload='${suggestions[i].payload}'>
+                ${suggestions[i].title}</br>
+                <a href='${suggestions[i].url}'>Link</a>
+                </div>`,
             ).appendTo(".menu");
         }
         scrollToBottomOfResults();
