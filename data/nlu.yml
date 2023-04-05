@@ -1,5 +1,4 @@
 version: "3.1"
-
 nlu:
 - intent: greet
   examples: |
@@ -20,8 +19,6 @@ nlu:
     - heya
     - hello again
     - Greetings
-    
-
 - intent: goodbye
   examples: |
     - cu
@@ -36,8 +33,6 @@ nlu:
     - see you later
     - tata
     - see you
-
-
 - intent: affirm
   examples: |
     - yes
@@ -46,7 +41,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
@@ -56,7 +50,6 @@ nlu:
     - don't like that
     - no way
     - not really
-
 - intent: mood_great
   examples: |
     - perfect
@@ -73,7 +66,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -90,14 +82,12 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
 - intent: search_properties
   examples: |
     - I'm looking for a house to rent in [Markham](location).
@@ -123,12 +113,9 @@ nlu:
     - Any houses for rent in [Oakville](location)?
     - Find rental property with garage in [North York](location).
     - Show me properties close to transit in [Mississauga](location).
-
-# - entity: location
-#   examples: |
-#     - in [Hemilton](location)
-#     - near [Miami](location)
-
+    - looking for rent
+    - near [markham](location)
+    - No, I want properties near [Scarborough](location)
 - intent: schedule_tour
   examples: |
     - Schedule a tour for tomorrow.
@@ -147,9 +134,6 @@ nlu:
     - Can I see the apartment in person?
     - When can we come see the house?
     - What is the soonest we can schedule a tour?
-
-
-
 - intent: property_details
   examples: |
     - How big is the apartment?
@@ -175,8 +159,7 @@ nlu:
     - Are utilities included in the rental price?
     - Is there a security deposit required?
     - Are there any move-in specials or promotions currently available?
-
-
+    - Can i get the property details?
 - intent: availability_pricing
   examples: |
     - What's the monthly rent for this house?
@@ -200,8 +183,6 @@ nlu:
     - What's the maximum occupancy for this rental?
     - How much notice is required to vacate the property?
     - Are there any additional fees or charges associated with this rental?
-
-
 - intent: cancel_tour
   examples: |
     - I need to cancel my scheduled property tour.
@@ -214,8 +195,6 @@ nlu:
     - Can you confirm that my property tour has been cancelled?
     - I need to cancel the tour that was scheduled for later today.
     - Can I reschedule my property tour for a different time or day?
-
-
 - intent: pet_policy
   examples: |
     - Are pets allowed in this apartment complex?
@@ -228,8 +207,6 @@ nlu:
     - What are the fees associated with having a pet in this rental property?
     - Can you tell me more about the pet policy for this house?
     - Is there a pet rent or additional fee for having a pet in this rental property?
-
-
 - intent: lease_details
   examples: |
     - What's the lease term for this apartment?
@@ -242,8 +219,6 @@ nlu:
     - Is there a penalty for early lease termination?
     - Can I renew my lease agreement?
     - What's the process for extending my lease?
-
-
 - intent: parking_info
   examples: |
     - Is there parking available at this property?
@@ -252,8 +227,6 @@ nlu:
     - Are there any additional fees for parking?
     - What are the parking rules for this complex?
     - Where can I park my motorcycle on this property?
-
-
 - intent: out_of_scope
   examples: |
     - I want to order food

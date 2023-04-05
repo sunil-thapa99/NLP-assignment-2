@@ -1,62 +1,18 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/custom-actions
-
-
-# This is a simple example for a custom action which utters "Hello World!"
-
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
-
-
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 # from rasa_sdk.forms import FormAction
 from datetime import datetime
+from .scrap import get_context, get_links, get_original_url
+import pandas as pd
 
-# class ActionGreet(Action):
-#     def name(self) -> Text:
-#         return "action_greet"
-
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-#         dispatcher.utter_message(response="utter_greet")
-        
-#         return []
-    
-# class ActionGoodbye(Action):
-#     def name(self) -> Text:
-#         return "action_goodbye"
-
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-#         dispatcher.utter_message(response="utter_goodbye")
-        
-#         return []
+# Extract title and url from dataframe for chatbot to show
+def get_ad_info(df: pd.DataFrame) -> List[Dict[Text, Any]]:
+    ad_info = []
+    for i in range(len(df)):
+        ad_info.append({"title": df.iloc[i]["title"], "url": df.iloc[i]["url"]})
+    return ad_info
 
 class ActionSearchProperties(Action):
 
@@ -75,7 +31,39 @@ class ActionSearchProperties(Action):
             dispatcher.utter_message(text="Please enter a valid location to search for properties.")
             return [SlotSet("entity_name", None)]
         else:
-            dispatcher.utter_message(text=f"Here are some properties available in {location}: [Property 1], [Property 2], [Property 3]")
+            df = pd.DataFrame(columns=["title", "price", "description", "date_posted", "address", "url"])
+            url = get_original_url(location)
+            demo_links = get_links(url=url)
+            for link in demo_links[:5]:
+                result = get_context(link)
+                df = df.append(result, ignore_index=True)
+            df.to_csv('kijiji_toronto_apartments.csv', index=False)
+            ad_info = get_ad_info(df)
+            # Loop through each ad and show through listing
+            text = f"Here are some properties available in {location}: \n"
+            buttons = []
+            # Loop through each ad and show through listing with buttons
+            for i in range(len(ad_info)):
+                buttons.append(
+                    {"title": f"{i+1} - {ad_info[i]['title']}", "payload": f"/inform{{\"url\": \"{ad_info[i]['url']}\"}}"}
+                )
+            # for i in range(len(ad_info)):
+            #     text += f"{i+1} - {ad_info[i]['title']}: {ad_info[i]['url']} \n"
+            # print(text)
+            # dispatcher.utter_message(text=f"Here are some properties available in {location}: \n"+
+            dispatcher.utter_message(text=text, buttons=buttons)
+            return []
+
+# action_search_properties_no_location
+class ActionSearchPropertiesNoLocation(Action):
+        def name(self) -> Text:
+            return "action_search_properties_no_location"
+    
+        def run(self, dispatcher: CollectingDispatcher,
+                tracker: Tracker,
+                domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    
+            dispatcher.utter_message(text="Please enter a location to search for properties.")
             return []
 
 class ActionProvideLeaseDetails(Action):

@@ -73,3 +73,22 @@ stories:
   steps:
     - intent: pet_policy
     - action: action_provide_pet_policy
+
+- story: interactive_story_1
+  steps:
+  - intent: search_properties
+  - action: action_search_properties
+  - intent: search_properties
+    entities:
+    - location: markham
+  - slot_was_set:
+    - location: markham
+  - action: action_search_properties
+  - intent: search_properties
+    entities:
+    - location: Scarborough
+  - slot_was_set:
+    - location: Scarborough
+  - action: action_search_properties
+  - intent: property_details
+  - action: action_provide_property_details
