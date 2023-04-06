@@ -15,20 +15,22 @@ intents:
 - property_details
 - schedule_tour
 - search_properties
+- show_more
 entities:
 - location
-- idx
+- sorting
 slots:
   location:
     type: text
     mappings:
     - type: from_entity
       entity: location
-  idx:
+  sorting:
     type: text
     mappings:
     - type: from_entity
-      entity: idx
+      entity: sorting
+  
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -73,6 +75,7 @@ actions:
 - action_provide_parking_info
 - action_provide_pet_policy
 - action_schedule_tour
+- action_show_more
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

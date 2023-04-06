@@ -19,7 +19,7 @@ function setUserResponse(message) {
     $(".usrInput").val("");
     scrollToBottomOfResults();
     showBotTyping();
-    $(".suggestions").remove();
+    // $(".suggestions").remove();
 }
 
 
@@ -304,7 +304,7 @@ function actionTrigger() {
 // eslint-disable-next-line no-unused-vars
 function customActionTrigger() {
     $.ajax({
-        url: "https://sunilpersonalchatbot.herokuapp.com/webhook/",
+        url: "http://localhost:5005/webhooks/rest/webhook",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({
@@ -383,7 +383,7 @@ $(".usrInput").on("keyup keypress", (e) => {
         }
 
         $("#paginated_cards").remove();
-        $(".suggestions").remove();
+        // $(".suggestions").remove();
         $(".quickReplies").remove();
         $(".usrInput").blur();
         setUserResponse(text);
@@ -410,7 +410,7 @@ $("#sendButton").on("click", (e) => {
         modalChart.destroy();
     }
 
-    $(".suggestions").remove();
+    // $(".suggestions").remove();
     $("#paginated_cards").remove();
     $(".quickReplies").remove();
     $(".usrInput").blur();

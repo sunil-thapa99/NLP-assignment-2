@@ -7,6 +7,8 @@ body {
   font-size: 16px;
   line-height: 30px;
   color: #ababab;
+  background-image: url('/Users/sunilthapa/Desktop/AIMT/AML 2304/assignment-2/templates/bg.jpeg') !important;
+  background-size: cover;
 }
 
 a {

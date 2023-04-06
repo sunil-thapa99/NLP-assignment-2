@@ -8,8 +8,26 @@ function createCollapsible(collapsible_data) {
     // var collapsible_data=[{"title":"abc","description":"xyz"},{"title":"pqr","description":"jkl"}]
     let collapsible_list = "";
     for (let i = 0; i < collapsible_data.length; i += 1) {
-        const collapsible_item = `<li><div class="collapsible-header">${collapsible_data[i].title}</div><div class="collapsible-body">
-<span>${collapsible_data[i].description}</span></div></li>`;
+        const collapsible_item = `<li>
+                                    <div class="collapsible-header">
+                                        ${collapsible_data[i].title}
+                                    </div>
+                                    <div class="collapsible-body">
+                                        <span>
+                                            ${collapsible_data[i].description}
+                                        </span>
+                                        <span>
+                                            Price: ${collapsible_data[i].price}
+                                        </span>
+                                        <span>
+                                            Address: ${collapsible_data[i].address}
+                                        </span>
+                                        <span>
+                                            Date Posted: ${collapsible_data[i].date_posted}
+                                        </span>
+                                        <a href=${collapsible_data[i].date_posted}>${collapsible_data[i].date_posted}</a>
+                                    </div>
+                                </li>`;
 
         collapsible_list += collapsible_item;
     }

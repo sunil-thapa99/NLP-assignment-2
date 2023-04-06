@@ -116,6 +116,23 @@ nlu:
     - looking for rent
     - near [markham](location)
     - No, I want properties near [Scarborough](location)
+    - Looking for rent in [Markham](location) [ascending](sorting) order price
+    - Looking for properties in [Markham](location), price through [descending](sorting) order
+
+- intent: price_sort
+  examples: |
+    - show me from [lowest](sorting) price
+    - show me from [highest](sorting) price
+    - show me from [descending](sorting)
+    - [ascending](sorting) order
+    - [descending](sorting) order
+
+- intent: show_more
+  examples: |
+    - show me more
+    - show me more properties
+    - more
+
 - intent: schedule_tour
   examples: |
     - Schedule a tour for tomorrow.

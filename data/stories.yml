@@ -92,3 +92,15 @@ stories:
   - action: action_search_properties
   - intent: property_details
   - action: action_provide_property_details
+
+
+- story: interactive_story_2
+  steps:
+  - intent: search_properties
+    entities:
+    - location: markham
+  - slot_was_set:
+    - location: markham
+  - action: action_search_properties
+  - intent: show_more
+  - action: action_show_more

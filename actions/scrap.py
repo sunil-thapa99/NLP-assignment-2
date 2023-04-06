@@ -13,8 +13,15 @@ BASE_URL = 'https://www.kijiji.ca/'
 
 start_page = 1
 
-def get_original_url(address: str) -> str:
-    room_and_rental_term_url = BASE_URL + f'b-for-rent/city-of-toronto/{address}/page-1/k0c30349001l1700273'
+def get_original_url(address: str, sorting: str) -> str:
+    if sorting:
+        if 'low' in sorting or 'asc' in sorting:
+            sorting = 'priceAsc'
+        elif 'high' in sorting or 'desc' in sorting:
+            sorting = 'priceDesc'
+        room_and_rental_term_url = BASE_URL + f'b-for-rent/city-of-toronto/{address}/page-1/k0c30349001l1700273?sort={sorting}'
+    else:
+        room_and_rental_term_url = BASE_URL + f'b-for-rent/city-of-toronto/{address}/page-1/k0c30349001l1700273'
     return room_and_rental_term_url
 
 def get_links(url: str) -> list:

@@ -1,5 +1,5 @@
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   /* background: url("../img/body.png") no-repeat center center fixed;
   background-size: cover; */
 }
@@ -8,9 +8,9 @@ body {
 
 .widget {
   display: none;
-  width: 350px;
+  width: 98%;
   right: 15px;
-  height: 500px;
+  height: 92%;
   bottom: 5%;
   position: fixed;
   background: #fff;
@@ -23,20 +23,20 @@ body {
   height: 60px;
   background: #060dcfc7;
   border-radius: 10px 10px 0px 0px;
-  padding: 5px;
+  /* padding: 5px; */
   font-size: 20px;
 }
 
 .chat_header_title {
   color: white;
   float: left;
-  margin-top: 3%;
-  margin-left: 35%;
+  margin-top: 1%;
+  margin-left: 47%;
 }
 
 .chats {
   /* display: none; */
-  height: 385px;
+  height: 80%;
   padding: 2px;
   border-radius: 1px;
   overflow-y: scroll;
@@ -199,8 +199,8 @@ blockquote {
   /* display: none; */
   position: fixed;
   padding: 5px;
-  width: 10%;
-  bottom: 0;
+  width: 12%;
+  bottom: 10px;
   right: 0;
   cursor: pointer;
 }
@@ -225,7 +225,7 @@ blockquote {
   color: white;
   margin-right: 5px;
   float: right;
-  margin-top: 3%;
+  margin-top: 2%;
 }
 
 .dropdown-content li > a,
@@ -427,10 +427,10 @@ div.content_data::-webkit-scrollbar {
 
 .suggestions {
   padding: 5px;
-  width: 80%;
+  width: 45%;
   border-radius: 10px;
   background: #ffffff;
-  box-shadow: 2px 5px 5px 1px #dbdade;
+  /* box-shadow: 2px 5px 5px 1px #dbdade; */
 }
 
 .menuTitle {
@@ -447,8 +447,9 @@ div.content_data::-webkit-scrollbar {
   display: block;
   background: #060dcfc7;
   color: #fff;
-  text-align: center;
+  /* text-align: center; */
   padding: 5px;
+  padding-left: 5%;
   margin-bottom: 5px;
   cursor: pointer;
   border-radius: 15px;

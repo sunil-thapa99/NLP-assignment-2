@@ -9,12 +9,18 @@ import pandas as pd
 import json 
 
 df = pd.DataFrame(columns=["title", "price", "description", "date_posted", "address", "url"])
-
+idx = 0
 # Extract title and url from dataframe for chatbot to show
-def get_ad_info(df: pd.DataFrame) -> List[Dict[Text, Any]]:
+def get_ad_info(index: int=5) -> List[Dict[Text, Any]]:
     ad_info = []
-    for i in range(len(df)):
-        ad_info.append({"title": df.iloc[i]["title"], "url": df.iloc[i]["url"]})
+    global idx
+    global df
+    if idx < df.shape[0]:
+        for i in range(idx, index):
+            ad_info.append({"title": df.iloc[i]["title"], "url": df.iloc[i]["url"]})
+            idx += 1
+    else:
+        ad_info.append({"title": "No more listings", "url": None})
     return ad_info
 
 class ActionSearchProperties(Action):
@@ -27,6 +33,10 @@ class ActionSearchProperties(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         location = tracker.get_slot("location")
+        try:
+            sorting = tracker.get_slot('sorting')
+        except:
+            sorting = None
         global df
         df = df.iloc[0:0]
         if location is None:
@@ -36,13 +46,13 @@ class ActionSearchProperties(Action):
             dispatcher.utter_message(text="Please enter a valid location to search for properties.")
             return [SlotSet("entity_name", None)]
         else:
-            url = get_original_url(location)
+            url = get_original_url(location, sorting)
             demo_links = get_links(url=url)
-            for link in demo_links[:5]:
+            for link in demo_links[:20]:
                 result = get_context(link)
                 df = df.append(result, ignore_index=True)
             df.to_csv('kijiji_toronto_apartments.csv', index=False)
-            ad_info = get_ad_info(df)
+            ad_info = get_ad_info()
             # Loop through each ad and show through listing
             text = f"Here are some properties available in {location}: \n"
             buttons = []
@@ -66,6 +76,31 @@ class ActionSearchPropertiesNoLocation(Action):
     
             dispatcher.utter_message(text="Please enter a location to search for properties.")
             return []
+
+# action for show more
+class ActionShowMore(Action):
+    def name(self) -> Text:
+        return "action_show_more"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        global idx, df
+        id = idx
+        ad_info = get_ad_info(idx+5)
+        # Loop through each ad and show through listing
+        text = f"Here are some more properties: \n"
+        buttons = []
+        # Loop through each ad, payload on title and show url
+        for i in range(len(ad_info)):
+            buttons.append(
+                {"title": f"{id+1} - {ad_info[i]['title']}", "payload": '/property_details{\"idx\":\"' + str(i) + '\"}', 
+                    'url': ad_info[i]['url']}
+            )
+            id += 1
+        dispatcher.utter_message(text=text, buttons=buttons)
+        return []
 
 class ActionProvideLeaseDetails(Action):
 
@@ -95,13 +130,13 @@ class ActionProvidePropertyDetails(Action):
         command, json_payload = message_text.split('property_details', 1)
         idx_value = int(json.loads(json_payload)['idx'])
 
-        dispatcher.utter_message(text=f"Here are the details for the property: \n"
-                                        f"Title: {df.iloc[idx_value]['title']} \n"
-                                        f"Price: {df.iloc[idx_value]['price']} \n"
-                                        f"Description: {df.iloc[idx_value]['description'][11:]} \n"
-                                        f"Date Posted: {df.iloc[idx_value]['date_posted']} \n"
-                                        f"Address: {df.iloc[idx_value]['address']} \n"
-                                        f"URL: {df.iloc[idx_value]['url']} \n")
+        dispatcher.utter_message(text=f"Here are the details for the property: </hr></br>"
+                                        f"<strong>Title</strong>: {df.iloc[idx_value]['title']} </hr></br>"
+                                        f"<strong>Price</strong>: {df.iloc[idx_value]['price']} </hr></br>"
+                                        f"<strong>Description</strong>: {df.iloc[idx_value]['description'][11:]} </hr></br>"
+                                        f"<strong>Date Posted</strong>: {df.iloc[idx_value]['date_posted']} </hr></br>"
+                                        f"<strong>Address</strong>: {df.iloc[idx_value]['address']} </hr></br>"
+                                        f"<strong>URL</strong>: <a href='{df.iloc[idx_value]['url']}'>{df.iloc[idx_value]['url']}</a> </hr></br>")
         return []
 
 class ActionAvailabilityPricing(Action):

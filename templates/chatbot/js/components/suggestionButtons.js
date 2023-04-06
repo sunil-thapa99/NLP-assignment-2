@@ -15,10 +15,9 @@ function addSuggestion(suggestions) {
         for (let i = 0; i < suggLength; i += 1) {
             $(
                 `<div class="menuChips" data-payload='${suggestions[i].payload}'>
-                ${suggestions[i].title}</br>
-                <a href='${suggestions[i].url}'>Link</a>
+                ${suggestions[i].title}
                 </div>`,
-            ).appendTo(".menu");
+            ).appendTo(".menu:last");
         }
         scrollToBottomOfResults();
     }, 1000);
@@ -34,5 +33,5 @@ $(document).on("click", ".menu .menuChips", function () {
     send(payload);
 
     // delete the suggestions once user click on it.
-    $(".suggestions").remove();
+    // $(".suggestions").remove();
 });
