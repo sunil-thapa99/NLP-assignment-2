@@ -15,6 +15,7 @@ def get_ad_info(index: int=5) -> List[Dict[Text, Any]]:
     ad_info = []
     global idx
     global df
+    print(idx, df.shape)
     if idx < df.shape[0]:
         for i in range(idx, index):
             ad_info.append({"title": df.iloc[i]["title"], "url": df.iloc[i]["url"]})
