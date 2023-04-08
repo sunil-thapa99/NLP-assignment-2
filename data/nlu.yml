@@ -133,6 +133,11 @@ nlu:
     - show me more properties
     - more
 
+- intent: gender_query
+  examples: |
+  - are there any for [male](gender)
+  - are there any for [female](gender)
+
 - intent: schedule_tour
   examples: |
     - Schedule a tour for tomorrow.

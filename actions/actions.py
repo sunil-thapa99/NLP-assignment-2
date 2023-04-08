@@ -103,6 +103,36 @@ class ActionShowMore(Action):
         dispatcher.utter_message(text=text, buttons=buttons)
         return []
 
+# action for querying through df description if there is specific for gender
+class ActionQueryGender(Action):
+    def name(self) -> Text:
+        return "action_query_gender"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        global df
+        gender = tracker.get_slot("gender")
+        new_df = df[df['description'].str.contains(gender, case=False)]
+        if new_df.shape[0] == 0:
+            dispatcher.utter_message(text="Sorry, there are no properties that match your criteria.")
+            return []
+        else:
+            ad_info = get_ad_info()
+            # Loop through each ad and show through listing
+            text = f"Here are some properties that match your criteria: \n"
+            buttons = []
+            # Loop through each ad, payload on title and show url
+            for i in range(len(ad_info)):
+                buttons.append(
+                    {"title": f"{i+1} - {ad_info[i]['title']}", "payload": '/property_details{\"idx\":\"' + str(i) + '\"}', 
+                        'url': ad_info[i]['url']}
+                )
+            dispatcher.utter_message(text=text, buttons=buttons)
+            return []
+
+
 class ActionProvideLeaseDetails(Action):
 
     def name(self) -> Text:

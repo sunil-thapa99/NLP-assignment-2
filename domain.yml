@@ -16,6 +16,7 @@ intents:
 - schedule_tour
 - search_properties
 - show_more
+- gender_query
 entities:
 - location
 - sorting
@@ -30,6 +31,11 @@ slots:
     mappings:
     - type: from_entity
       entity: sorting
+  gender:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: gender
   
 responses:
   utter_greet:
@@ -76,6 +82,7 @@ actions:
 - action_provide_pet_policy
 - action_schedule_tour
 - action_show_more
+- action_query_gender
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

@@ -74,6 +74,11 @@ stories:
     - intent: pet_policy
     - action: action_provide_pet_policy
 
+- story: gender details
+  steps:
+    - intent: gender_query
+    - action: action_query_gender
+
 - story: interactive_story_1
   steps:
   - intent: search_properties
