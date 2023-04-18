@@ -17,9 +17,14 @@ intents:
 - search_properties
 - show_more
 - gender_query
+- floor_query
+- bedroom_query
 entities:
 - location
 - sorting
+- gender
+- floor_type
+- bedrooms
 slots:
   location:
     type: text
@@ -36,6 +41,17 @@ slots:
     mappings:
     - type: from_entity
       entity: gender
+  floor_type:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: floor_type
+  bedrooms:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: bedrooms
+    
   
 responses:
   utter_greet:
@@ -83,6 +99,8 @@ actions:
 - action_schedule_tour
 - action_show_more
 - action_query_gender
+- action_query_basement
+- action_query_bedrooms
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

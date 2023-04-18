@@ -79,6 +79,16 @@ stories:
     - intent: gender_query
     - action: action_query_gender
 
+- story: floor details
+  steps:
+    - intent: floor_query
+    - action: action_query_basement
+
+- story: bedroom details
+  steps:
+    - intent: bedroom_query
+    - action: action_query_bedrooms
+
 - story: interactive_story_1
   steps:
   - intent: search_properties

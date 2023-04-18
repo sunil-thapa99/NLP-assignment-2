@@ -135,8 +135,22 @@ nlu:
 
 - intent: gender_query
   examples: |
-  - are there any for [male](gender)
-  - are there any for [female](gender)
+    - are there any for [male](gender)
+    - are there any for [female](gender)
+
+- intent: floor_query
+  examples: |
+    - are there any for [basement](floor_type)
+    - are there any for [main floor](floor_type)
+    - [basement](floor_type)
+    - [top floor](floor_type)
+
+- intent: bedroom_query
+  examples: |
+    - are there any for [2](bedrooms) bedrooms
+    - are there any for [3](bedrooms) bedrooms
+    - [2](bedrooms) bedrooms
+    - [1](bedrooms) bedrooms
 
 - intent: schedule_tour
   examples: |
