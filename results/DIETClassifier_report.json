@@ -1,9 +1,23 @@
 {
-  "location": {
+  "floor_type": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 32,
+    "support": 6,
+    "confused_with": {}
+  },
+  "bedrooms": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 4,
+    "confused_with": {}
+  },
+  "gender": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2,
     "confused_with": {}
   },
   "sorting": {
@@ -13,23 +27,30 @@
     "support": 7,
     "confused_with": {}
   },
+  "location": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 32,
+    "confused_with": {}
+  },
   "micro avg": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 39
+    "support": 51
   },
   "macro avg": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 39
+    "support": 51
   },
   "weighted avg": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 39
+    "support": 51
   },
   "accuracy": 1.0
 }

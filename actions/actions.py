@@ -116,6 +116,7 @@ class ActionSearchProperties(Action):
                 else:
                     df = df['price'].sort_values(by='price', ascending=False)
             ad_info = get_ad_info(df)
+            print(ad_info)
             # Loop through each ad and show through listing
             text = f"Here are some properties available in {location}: \n"
             buttons = []

@@ -18,6 +18,12 @@ pipeline:
     analyzer: char_wb
     min_ngram: 1
     max_ngram: 4
+  # - name: LogisticRegressionClassifier
+  #   max_iter: 100
+  #   solver: lbfgs
+  #   tol: 0.0001
+  #   random_state: 42
+  #   ranking_length: 10
   - name: DIETClassifier
     epochs: 200
     evaluate_on_number_of_examples: 0
